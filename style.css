@@ -1,0 +1,267 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Manrope', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat; /* Ensures background doesn't repeat */
+}
+
+/* Common box styling */
+.box {
+    padding: 30px 20px;
+    width: 400px;
+    height: auto;
+    backdrop-filter: blur(50px);
+    border-radius: 10px;
+    background: rgba(49, 49, 49, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.box .form {
+    padding: 20px 30px;
+}
+
+.box .form h2 {
+    font-family: 'Lucida Handwriting', cursive;
+    text-align: center;
+    color: #0b1831;
+    text-shadow: 3px 3px 6px #6d6464;
+    margin-bottom: 60px;
+}
+
+.box .form form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.box .form form .inputbox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.box .form form .inputbox label {
+    font-size: 18px;
+    font-family: 'Lucida Console', monospace;
+    color: #151313;
+    margin-bottom: 8px;
+}
+
+.box .form form .inputbox input {
+    padding: 12px;
+    border: none;
+    background: none;
+    border-bottom: 2px solid #ffffff;
+    outline: none;
+    color: #121010;
+    transition: border-bottom-color 0.3s ease;
+}
+
+.box .form form .inputbox input:focus {
+    border-bottom-color: #8b8b8b;
+}
+
+.box .form form .sub {
+    padding: 12px 25px;
+    color: #fff;
+    background: linear-gradient(45deg, #595252, #8b8b8b);
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Lucida Console', monospace;
+    border-radius: 6px;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.box .form form .sub:hover {
+    background: linear-gradient(45deg, #8b8b8b, #595252);
+    transform: scale(1.05);
+}
+
+.box .form form .sub:active {
+    transform: scale(0.98);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Loader styles */
+.loader {
+    display: none;
+    /* Hide loader initially */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    margin: -15px 0 0 -15px;
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
+
+/* Keyframes for spinning */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Blur effect for content when loading */
+body.loading .content {
+    filter: blur(10px);
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Lucida Handwriting', cursive;
+    color: #080c0f;
+    font-size: 50px;
+    text-shadow: 2px 2px 4px #accce1;
+}
+
+/* Button */
+.button {
+    border-radius: 10px;
+    background: linear-gradient(135deg, #3e8e41, #346240, #2a4d2f); /* Stylish gradient in shades of green */
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    padding: 13px;
+    width: 165px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin: 5px;
+    position: fixed; /* Positioning it on the page */
+    bottom: 190px; /* Moves the button down */
+    right: 250px; /* Moves the button to the right corner */
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.3s ease-in-out;
+}
+
+.button span:after {
+    content: '\00bb'; /* Arrow symbol */
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.3s ease-in-out;
+}
+
+.button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+/* Clock */
+#clock {
+    font-size: 30px;
+    width: 250px;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    position: fixed; /* Fixes the clock position */
+    top: 20px; /* Moves the clock near the top */
+    right: 20px; /* Moves the clock to the right */
+    margin: 0;
+}
+
+/* Media Queries for Small Devices */
+@media (max-width: 768px) {
+    .box {
+        width: 80%; /* Makes the box take up 80% of the screen */
+        padding: 45px; /* Reduces padding */
+    }
+
+    .box .form h2 {
+        font-size: 22px; /* Reduces the font size for small screens */
+        margin-bottom: 30px;
+    }
+
+    .button {
+        width: 140px; /* Reduces button size */
+        bottom: 150px; /* Adjusts position */
+        right: 20px;  /* Moves the button closer to the corner */
+    }
+
+    #clock {
+        font-size: 25px; /* Reduces the clock font size */
+        width: 200px;
+    }
+
+    h1 {
+        font-size: 40px; /* Reduces header font size */
+    }
+}
+
+/* Media Queries for Very Small Devices */
+@media (max-width: 480px) {
+    .box {
+        width: 90%; /* Further reduce box size */
+        padding: 45px; /* Further reduce padding */
+    }
+
+    .box .form h2 {
+        font-size: 22px; /* Even smaller font size */
+        margin-bottom: 20px;
+    }
+
+    .button {
+        width: 120px; /* Further reduce button size */
+        bottom: 120px; /* Moves the button up */
+        right: 10px; /* Adjusts button position */
+    }
+
+    #clock {
+        font-size: 20px; /* Reduces clock font size more */
+        width: 160px;
+    }
+
+    h1 {
+        font-size: 30px; /* Smaller header font size */
+    }
+}
