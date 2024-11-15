@@ -11,7 +11,8 @@ body {
     align-items: center;
     min-height: 100vh;
     background-size: cover;
-    background-repeat: no-repeat; /* Ensures background doesn't repeat */
+    background-repeat: no-repeat;
+    /* Ensures background doesn't repeat */
 }
 
 /* Common box styling */
@@ -152,7 +153,8 @@ h1 {
 /* Button */
 .button {
     border-radius: 10px;
-    background: linear-gradient(135deg, #3e8e41, #346240, #2a4d2f); /* Stylish gradient in shades of green */
+    background: linear-gradient(135deg, #3e8e41, #346240, #2a4d2f);
+    /* Stylish gradient in shades of green */
     border: none;
     color: #FFFFFF;
     text-align: center;
@@ -162,9 +164,12 @@ h1 {
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     margin: 5px;
-    position: fixed; /* Positioning it on the page */
-    bottom: 190px; /* Moves the button down */
-    right: 250px; /* Moves the button to the right corner */
+    position: fixed;
+    /* Positioning it on the page */
+    bottom: 190px;
+    /* Moves the button down */
+    right: 250px;
+    /* Moves the button to the right corner */
 }
 
 .button span {
@@ -175,7 +180,8 @@ h1 {
 }
 
 .button span:after {
-    content: '\00bb'; /* Arrow symbol */
+    content: '\00bb';
+    /* Arrow symbol */
     position: absolute;
     opacity: 0;
     top: 0;
@@ -204,64 +210,177 @@ h1 {
     text-align: center;
     border: 2px solid black;
     border-radius: 20px;
-    position: fixed; /* Fixes the clock position */
-    top: 20px; /* Moves the clock near the top */
-    right: 20px; /* Moves the clock to the right */
+    position: fixed;
+    /* Fixes the clock position */
+    top: 20px;
+    /* Moves the clock near the top */
+    right: 20px;
+    /* Moves the clock to the right */
     margin: 0;
 }
 
 /* Media Queries for Small Devices */
 @media (max-width: 768px) {
     .box {
-        width: 80%; /* Makes the box take up 80% of the screen */
-        padding: 45px; /* Reduces padding */
+        width: 80%;
+        /* Makes the box take up 80% of the screen */
+        padding: 45px;
+        /* Reduces padding */
     }
 
     .box .form h2 {
-        font-size: 22px; /* Reduces the font size for small screens */
+        font-size: 22px;
+        /* Reduces the font size for small screens */
         margin-bottom: 30px;
     }
 
     .button {
-        width: 140px; /* Reduces button size */
-        bottom: 150px; /* Adjusts position */
-        right: 20px;  /* Moves the button closer to the corner */
+        width: 140px;
+        /* Reduces button size */
+        bottom: 150px;
+        /* Adjusts position */
+        right: 20px;
+        /* Moves the button closer to the corner */
     }
 
     #clock {
-        font-size: 25px; /* Reduces the clock font size */
+        font-size: 25px;
+        /* Reduces the clock font size */
         width: 200px;
     }
 
     h1 {
-        font-size: 40px; /* Reduces header font size */
+        font-size: 40px;
+        /* Reduces header font size */
     }
 }
 
 /* Media Queries for Very Small Devices */
 @media (max-width: 480px) {
     .box {
-        width: 90%; /* Further reduce box size */
-        padding: 45px; /* Further reduce padding */
+        width: 90%;
+        /* Further reduce box size */
+        padding: 45px;
+        /* Further reduce padding */
     }
 
     .box .form h2 {
-        font-size: 22px; /* Even smaller font size */
+        font-size: 22px;
+        /* Even smaller font size */
         margin-bottom: 20px;
     }
 
     .button {
-        width: 120px; /* Further reduce button size */
-        bottom: 120px; /* Moves the button up */
-        right: 10px; /* Adjusts button position */
+        width: 120px;
+        /* Further reduce button size */
+        bottom: 120px;
+        /* Moves the button up */
+        right: 10px;
+        /* Adjusts button position */
     }
 
     #clock {
-        font-size: 20px; /* Reduces clock font size more */
+        font-size: 20px;
+        /* Reduces clock font size more */
         width: 160px;
     }
 
     h1 {
-        font-size: 30px; /* Smaller header font size */
+        font-size: 30px;
+        /* Smaller header font size */
+    }
+}
+
+h3 {
+    text-align: center;
+    font-family: 'Lucida Handwriting', cursive;
+    color: #c6dff3;
+    font-size: 50px;
+    text-shadow: 2px 2px 4px #252a2d;
+}
+
+/* Sidebar (on the right side of the page) */
+.w3-sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    right: -250px;
+    /* Initially hidden */
+    height: 100%;
+    background-color: #f8f9fa;
+    box-shadow: -2px 0 5px rgba(250, 242, 242, 0.2);
+    z-index: 1000;
+    transition: 0.3s;
+    /* Smooth open/close animation */
+    overflow-y: auto;
+    /* Enable scrolling if content overflows */
+}
+
+/* Sidebar close button */
+.w3-closebtn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+/* Sidebar links */
+/* Sidebar links */
+.w3-bar-item {
+    margin-top: 10px; /* Reduced margin-top for better spacing */
+    padding: 10px 20px; /* Adjust padding for smaller spacing */
+    text-decoration: none;
+    display: block;
+    color: #d6cdcd;
+    background-color: #04111e;
+    text-align: left;
+}
+
+/* Adjust for the sidebar to make sure links are visible */
+.w3-sidebar {
+    padding-top: 35px; /* Adjust this value to ensure no overlap with header */
+}
+
+/* Hover effect */
+.w3-bar-item:hover {
+    background-color: #787171;
+}
+
+/* Header Section */
+.w3-header {
+    background-color: #04111e;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 1100;
+    justify-content: space-between;
+    /* Space out the title and menu button */
+}
+
+.header-title {
+    font-size: 20px;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.w3-main {
+    margin-top: calc(50px + 10px);
+    /* Adjust this if your header height changes */
+    padding: 170px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .w3-sidebar {
+        flex-direction: column;
+        /* Stack items vertically on smaller screens */
     }
 }
