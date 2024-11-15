@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAkdkpyo0ArzyLutOsQrkG5SPHeQtsnAbE",
+            authDomain: "login-app-1f876.firebaseapp.com",
+            projectId: "login-app-1f876",
+            storageBucket: "login-app-1f876.appspot.com",
+            messagingSenderId: "449811329968",
+            appId: "1:449811329968:web:d228025a49ea11c2e89c75"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Sanitize email function
+        function sanitizeEmail(email) {
+            return email.replace(/[^a-zA-Z0-9]/g, "_");
+        }
+
+        // Show loader function
+        function showLoader() {
+            document.getElementById("loader").style.display = "block";
+            document.body.classList.add("loading");
+        }
+
+        // Hide loader function
+        function hideLoader() {
+            document.getElementById("loader").style.display = "none";
+            document.body.classList.remove("loading");
+        }
+
+        // Handle form submission
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('loginForm').addEventListener("submit", function (e) {
+                e.preventDefault(); // Prevent form submission
+                showLoader(); // Show loader
+
+                const username = document.getElementById("username").value;
+                const email = document.getElementById("email").value;
+                const phone = document.getElementById("phone").value;
+
+                const sanitizedEmail = sanitizeEmail(email);
+
+                set(ref(db, 'user/' + sanitizedEmail), {
+                    username: username,
+                    email: email,
+                    phone: phone
+                }).then(() => {
+                    hideLoader(); // Hide loader after success
+                    window.location.href = "next.html"; // Redirect to dashboard
+                }).catch((error) => {
+                    hideLoader(); // Hide loader on error
+                    alert("Error: " + error.message);
+                });
+            });
+        });
+    </script>
+</head>
+<style>
+    body {
+        background: url('images/bg.jpg');
+        background-size: cover;
+    }
+</style>
+
+<body>
+    <!-- Loader -->
+    <div id="loader" class="loader"></div>
+
+    <!-- Main content -->
+    <div class="content">
+        <div class="box">
+            <div class="form">
+                <h2>Login Form</h2>
+                <form id="loginForm">
+                    <div class="inputbox">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="inputbox">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="inputbox">
+                        <label for="phone">Phone Number</label>
+                        <input type="text" id="phone" required>
+                    </div>
+                    <input type="submit" value="Submit" class="sub">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
